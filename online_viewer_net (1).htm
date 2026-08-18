@@ -1,0 +1,536 @@
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<div style="width:100%; min-height:100vh; background:#f5f5f7; font-family:'Poppins',sans-serif; color:#111827;">
+
+  <header style="background:linear-gradient(135deg,#171329,#25163d); color:white; padding:32px 24px 38px;">
+    <div style="max-width:1050px; margin:auto;">
+      <div style="display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap;">
+
+        <div>
+          <div style="font-size:12px; font-weight:600; letter-spacing:2px; color:#c4b5fd;">
+            DIBOS DRAWING
+          </div>
+
+          <h1 style="font-family:'Playfair Display',serif; font-size:38px; margin:5px 0 4px;">
+            Competition 2026
+          </h1>
+
+          <p style="margin:0; color:#d1d5db; font-size:14px;">
+            Show Your artistic self.
+          </p>
+        </div>
+
+        <div style="background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.15); padding:18px 24px; border-radius:12px; text-align:center;">
+          <div style="font-size:11px; color:#c4b5fd; text-transform:uppercase; letter-spacing:1px;">
+            Prize Pool
+          </div>
+
+          <div style="font-size:28px; font-weight:700; margin-top:3px;">
+            10,000 TK
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main style="max-width:720px; margin:38px auto; padding:0 20px;">
+
+    <section style="background:white; border:1px solid #e5e7eb; border-radius:16px; padding:34px; box-shadow:0 8px 30px rgba(0,0,0,.05);">
+
+      <div style="margin-bottom:28px;">
+
+        <div style="font-size:11px; font-weight:700; color:#9333ea; letter-spacing:1.5px; text-transform:uppercase;">
+          Competition Entry
+        </div>
+
+        <h2 style="font-family:'Playfair Display',serif; font-size:32px; margin:5px 0 8px;">
+          Submit Your Details
+        </h2>
+
+        <p style="font-size:14px; color:#6b7280; margin:0;">
+          Fill in your information and upload your drawing video.
+        </p>
+
+      </div>
+
+      <form id="mainForm" onsubmit="handleSubmit(event)">
+
+        <div style="margin-bottom:20px;">
+
+          <label style="display:block; font-size:12px; font-weight:600; margin-bottom:7px;">
+            FULL NAME
+          </label>
+
+          <input
+            type="text"
+            id="name"
+            placeholder="eg. MD Dibos"
+            required
+            style="width:100%; box-sizing:border-box; padding:13px 14px; border:1px solid #d1d5db; border-radius:8px; background:#fafafa; font-family:'Poppins',sans-serif; outline:none;"
+          >
+
+          <div id="nameError" style="display:none; color:#dc2626; font-size:11px; margin-top:5px;"></div>
+
+        </div>
+
+        <div style="margin-bottom:20px;">
+
+          <label style="display:block; font-size:12px; font-weight:600; margin-bottom:7px;">
+            WHATSAPP NUMBER
+          </label>
+
+          <input
+            type="tel"
+            id="phone"
+            placeholder="+880 1234567890"
+            required
+            style="width:100%; box-sizing:border-box; padding:13px 14px; border:1px solid #d1d5db; border-radius:8px; background:#fafafa; font-family:'Poppins',sans-serif; outline:none;"
+          >
+
+          <div id="phoneError" style="display:none; color:#dc2626; font-size:11px; margin-top:5px;"></div>
+
+        </div>
+
+        <div style="margin-bottom:24px;">
+
+          <label style="display:block; font-size:12px; font-weight:600; margin-bottom:7px;">
+            IN-GAME UID
+          </label>
+
+          <input
+            type="text"
+            id="uid"
+            placeholder="Your Free Fire UID"
+            required
+            style="width:100%; box-sizing:border-box; padding:13px 14px; border:1px solid #d1d5db; border-radius:8px; background:#fafafa; font-family:'Poppins',sans-serif; outline:none;"
+          >
+
+        </div>
+
+        <div style="margin-bottom:24px;">
+
+          <label style="display:block; font-size:12px; font-weight:600; margin-bottom:7px;">
+            DRAWING VIDEO
+          </label>
+
+          <div
+            id="uploadBox"
+            style="border:2px dashed #d8b4fe; border-radius:12px; background:#faf7ff; padding:25px 20px; text-align:center; transition:.25s;"
+          >
+
+            <div id="uploadIcon" style="font-size:30px; margin-bottom:8px;">
+              🎥
+            </div>
+
+            <div id="uploadTitle" style="font-size:14px; font-weight:600; color:#374151;">
+              Upload your drawing video
+            </div>
+
+            <div id="uploadDescription" style="font-size:12px; color:#9ca3af; margin-top:5px;">
+              Video needs to be max 2 minutes if over the limit your submission will be disqualified
+            </div>
+
+            <label
+              for="video"
+              style="display:inline-block; margin-top:16px; padding:10px 18px; background:#9333ea; color:white; border-radius:7px; font-size:12px; font-weight:600; cursor:pointer;"
+            >
+              Choose Video
+            </label>
+
+            <input
+              type="file"
+              id="video"
+              accept="video/*"
+              style="display:none;"
+              required
+            >
+
+            <div
+              id="videoError"
+              style="display:none; color:#dc2626; font-size:11px; margin-top:12px;"
+            ></div>
+
+          </div>
+
+          <div
+            id="videoPreviewContainer"
+            style="display:none; margin-top:14px; border:1px solid #e5e7eb; border-radius:12px; overflow:hidden; background:#111827;"
+          >
+
+            <video
+              id="videoPreview"
+              controls
+              playsinline
+              style="width:100%; max-height:400px; display:block; background:#000;"
+            ></video>
+
+            <div style="padding:12px 14px; background:white;">
+
+              <div
+                id="videoName"
+                style="font-size:12px; font-weight:600; color:#374151; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;"
+              ></div>
+
+              <div
+                id="videoDuration"
+                style="font-size:11px; color:#9ca3af; margin-top:3px;"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <details style="border:1px solid #e5e7eb; border-radius:9px; margin-bottom:24px; background:#fafafa;">
+
+          <summary style="cursor:pointer; padding:14px 16px; font-size:13px; font-weight:600; color:#374151;">
+            Competition Rules
+          </summary>
+
+          <div style="padding:0 18px 18px; font-size:13px; line-height:1.7; color:#6b7280;">
+
+            <div style="margin-top:12px;">
+              <strong style="color:#111827;">
+                No AI-generated content
+              </strong>
+
+              <p style="margin:4px 0 0;">
+                All submissions must be entirely hand-drawn. AI-generated artwork is not permitted.
+              </p>
+            </div>
+
+            <div style="margin-top:16px;">
+              <strong style="color:#111827;">
+                Family-friendly content
+              </strong>
+
+              <p style="margin:4px 0 0;">
+                Sexual, explicit, or offensive imagery is not allowed.
+              </p>
+            </div>
+
+            <div style="margin-top:16px;">
+              <strong style="color:#111827;">
+                Video requirement
+              </strong>
+
+              <p style="margin:4px 0 0;">
+                Your submission must be a video and must not exceed 2 minutes.
+              </p>
+            </div>
+
+            <div style="margin-top:16px;">
+              <strong style="color:#111827;">
+                Quality requirements
+              </strong>
+
+              <p style="margin:4px 0 0;">
+                Upload a clear video where your artwork can be properly viewed.
+              </p>
+            </div>
+
+            <div style="margin-top:16px;">
+              <strong style="color:#111827;">
+                Deadline
+              </strong>
+
+              <p style="margin:4px 0 0;">
+                Entries submitted after the competition deadline will not be accepted.
+              </p>
+            </div>
+
+            <div style="margin-top:18px; padding:12px; background:#fff7ed; border-left:3px solid #f59e0b; border-radius:5px; color:#92400e;">
+              Violation of the rules may result in disqualification.
+            </div>
+
+          </div>
+
+        </details>
+
+        <button
+          type="submit"
+          id="submitBtn"
+          style="width:100%; padding:14px; border:none; border-radius:9px; background:linear-gradient(135deg,#9333ea,#ec4899); color:white; font-family:'Poppins',sans-serif; font-size:14px; font-weight:600; cursor:pointer;"
+        >
+
+          <span id="btnText">
+            Submit
+          </span>
+
+          <span id="btnLoader" style="display:none;">
+
+            <span style="display:inline-flex; gap:4px; vertical-align:middle;">
+
+              <span class="dot"></span>
+              <span class="dot"></span>
+              <span class="dot"></span>
+
+            </span>
+
+            Sending to Portal...
+
+          </span>
+
+        </button>
+
+      </form>
+
+      <p style="font-size:11px; color:#9ca3af; text-align:center; margin:18px 0 0;">
+        Your information will only be used for competition submission.
+      </p>
+
+    </section>
+
+  </main>
+
+  <div
+    id="success"
+    style="display:none; position:fixed; top:20px; left:50%; transform:translateX(-50%); background:#111827; color:white; padding:14px 22px; border-radius:8px; font-size:13px; box-shadow:0 8px 25px rgba(0,0,0,.2); z-index:1000;"
+  >
+    ✓ Submission sent to the portal.
+  </div>
+
+  <style>
+
+    .dot {
+      display:inline-block;
+      width:5px;
+      height:5px;
+      background:white;
+      border-radius:50%;
+      animation:loadingDot 1.2s infinite;
+    }
+
+    .dot:nth-child(2) {
+      animation-delay:.2s;
+    }
+
+    .dot:nth-child(3) {
+      animation-delay:.4s;
+    }
+
+    @keyframes loadingDot {
+
+      0%,60%,100% {
+        opacity:.3;
+        transform:translateY(0);
+      }
+
+      30% {
+        opacity:1;
+        transform:translateY(-3px);
+      }
+
+    }
+
+  </style>
+
+  <script>
+
+    const videoInput = document.getElementById("video");
+    const videoPreview = document.getElementById("videoPreview");
+    const videoPreviewContainer = document.getElementById("videoPreviewContainer");
+    const videoError = document.getElementById("videoError");
+    const videoName = document.getElementById("videoName");
+    const videoDuration = document.getElementById("videoDuration");
+    const uploadBox = document.getElementById("uploadBox");
+
+    videoInput.addEventListener("change", function() {
+
+      const file = this.files[0];
+
+      videoError.style.display = "none";
+
+      if (!file) {
+        videoPreviewContainer.style.display = "none";
+        return;
+      }
+
+      if (!file.type.startsWith("video/")) {
+
+        videoError.textContent = "Please select a video file only.";
+        videoError.style.display = "block";
+        this.value = "";
+
+        return;
+      }
+
+      const videoURL = URL.createObjectURL(file);
+
+      videoPreview.src = videoURL;
+      videoPreviewContainer.style.display = "block";
+      videoName.textContent = file.name;
+
+      videoPreview.onloadedmetadata = function() {
+
+        const duration = videoPreview.duration;
+
+        if (duration > 120) {
+
+          videoError.textContent = "This video is longer than 2 minutes. Please choose a shorter video.";
+          videoError.style.display = "block";
+          videoPreviewContainer.style.display = "none";
+          videoInput.value = "";
+
+          URL.revokeObjectURL(videoURL);
+
+          return;
+        }
+
+        const minutes = Math.floor(duration / 60);
+        const seconds = Math.floor(duration % 60).toString().padStart(2, "0");
+
+        videoDuration.textContent =
+          "Duration: " + minutes + ":" + seconds + " · Ready to submit";
+
+        uploadBox.style.borderColor = "#a855f7";
+
+      };
+
+    });
+
+    function validateName(value) {
+
+      return /^[a-zA-Z\s]+$/.test(value) &&
+             value.trim().length > 0;
+
+    }
+
+    function validatePhone(value) {
+
+      return /^[\d+\-\s()]{10,}$/.test(value) &&
+             value.trim().length > 0;
+
+    }
+
+    function handleSubmit(e) {
+
+      e.preventDefault();
+
+      const name =
+        document.getElementById("name").value.trim();
+
+      const phone =
+        document.getElementById("phone").value.trim();
+
+      const uid =
+        document.getElementById("uid").value.trim();
+
+      const video =
+        videoInput.files[0];
+
+      const submitBtn =
+        document.getElementById("submitBtn");
+
+      const btnText =
+        document.getElementById("btnText");
+
+      const btnLoader =
+        document.getElementById("btnLoader");
+
+      let valid = true;
+
+      if (!validateName(name)) {
+
+        document.getElementById("nameError").textContent =
+          "Enter a valid name using letters only.";
+
+        document.getElementById("nameError").style.display =
+          "block";
+
+        valid = false;
+
+      } else {
+
+        document.getElementById("nameError").style.display =
+          "none";
+
+      }
+
+      if (!validatePhone(phone)) {
+
+        document.getElementById("phoneError").textContent =
+          "Enter a valid WhatsApp number.";
+
+        document.getElementById("phoneError").style.display =
+          "block";
+
+        valid = false;
+
+      } else {
+
+        document.getElementById("phoneError").style.display =
+          "none";
+
+      }
+
+      if (!video) {
+
+        videoError.textContent =
+          "Please upload your drawing video.";
+
+        videoError.style.display =
+          "block";
+
+        valid = false;
+
+      }
+
+      if (!uid) {
+        valid = false;
+      }
+
+      if (!valid) return;
+
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.8";
+
+      btnText.style.display = "none";
+      btnLoader.style.display = "inline";
+
+      setTimeout(() => {
+
+        document.getElementById("success").style.display =
+          "block";
+
+        setTimeout(() => {
+
+          document.getElementById("success").style.display =
+            "none";
+
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = "1";
+
+          btnText.style.display = "inline";
+          btnLoader.style.display = "none";
+
+          document.getElementById("mainForm").reset();
+
+          videoPreviewContainer.style.display =
+            "none";
+
+          uploadBox.style.borderColor =
+            "#d8b4fe";
+
+          videoPreview.src = "";
+
+        }, 3500);
+
+      }, 1800);
+
+      console.log({
+        name: name,
+        phone: phone,
+        uid: uid,
+        video: video.name,
+        videoSize: video.size,
+        timestamp: new Date().toISOString()
+      });
+
+    }
+
+  </script>
+
+</div>
